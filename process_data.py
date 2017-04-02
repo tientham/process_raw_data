@@ -21,7 +21,21 @@ def max(list):
 		if(element > tmp):
 			tmp = element
 	print "Max: " + str(tmp)
-
+def sort(list):
+	#min_val = list[0]
+	tmp = 0
+#	print len(list)
+	for i in range(len(list)):
+		#min_val=list[i]
+		#print i
+		for j in range(len(list)):
+			if(list[i] < list[j]):
+				tmp=list[j]			
+				list[j]=list[i]
+				list[i]=tmp
+		#list[i] = min_val
+	print list
+	return list
 #######################
 # Processing raw data #
 #######################
@@ -66,16 +80,17 @@ for line in lines:
 	y_axis.append(float(p[1]))
 
 xv = np.array(x_axis)
+xv = sort(xv)
 yv = np.array(y_axis)
 
 avg(yv)
 max(yv)
 # Plot the data
-data_plot=plt.plot(xv,yv, linestyle='', marker='o')
+data_plot=plt.plot(xv,yv, linestyle='--', marker='o')
 plt.setp(data_plot, 'color', 'r', 'linewidth', 2.0)
 plt.xlabel('Time Stamp')
 plt.ylabel('Loads [%]')
 plt.title('Calculation Raw Data - [minhtien.to@gmail.com]')
-plt.axis([0, 100, 0, 100])
+plt.axis([0, 25, 0, 100])
 plt.grid(True)
 plt.show()
