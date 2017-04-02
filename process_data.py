@@ -5,34 +5,53 @@
 
 import matplotlib.pyplot as plt
 import numpy as np
-import re
+import re, glob, os
+
+#######################
+# Processing raw data #
+#######################
+
+# Appeding all data
+file_list = glob.glob('./fakedata/*') 
+
+# Check before appending file
+try:
+	os.remove('data.dat')
+except OSError:
+	pass
+
+with open("data.dat", "a") as fout:
+	for file_path in file_list :
+		data_list= open(file_path, 'r').readlines()
+		fout.writelines(data_list)
 
 # Chaning data format if needed
-with open('fakedata/data_2', 'r+') as f:
+with open('data.dat', 'r+') as f:
 	newf= re.sub(r'(\s+[0-9]+),([0-9]+\s+)', r'\1.\2', f.read())
 	f.seek(0)
 	f.write(newf)
 
+###############
+# Draw graph  #
+###############
+
 # Storing data
-f2 = open('fakedata/data_2', 'r')
+f2 = open('data.dat', 'r')
 lines = f2.readlines()
 f2.close()
-#type(lines)
-#len(lines)
-#print(type(lines[0]))
 
 # Initialize some variable to be lists:
-x1= []
-y1= []
+x_axis= []
+y_axis= []
 
 # Scan the row of the file stroed in lines and put the values into some variables
 for line in lines:
 	p = line.split()
-	x1.append(float(p[0]))
-	y1.append(float(p[1]))
+	x_axis.append(float(p[0]))
+	y_axis.append(float(p[1]))
 
-xv = np.array(x1)
-yv = np.array(y1)
+xv = np.array(x_axis)
+yv = np.array(y_axis)
 
 # Plot the data
 data_plot=plt.plot(xv,yv)
