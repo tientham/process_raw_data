@@ -12,8 +12,8 @@ import re, glob, os
 #######################
 
 # Appeding all data
-file_list = glob.glob('./fakedata/*') 
-
+file_list = glob.glob('./fakedata/data_*') 
+#file_list=sorted(os.listdir('./fakedata/data_*')
 # Check before appending file
 try:
 	os.remove('data.dat')
@@ -27,7 +27,7 @@ with open("data.dat", "a") as fout:
 
 # Chaning data format if needed
 with open('data.dat', 'r+') as f:
-	newf= re.sub(r'(\s+[0-9]+),([0-9]+\s+)', r'\1.\2', f.read())
+	newf= re.sub(r'(\s*[0-9]+),([0-9]+\s+)', r'\1.\2', f.read())
 	f.seek(0)
 	f.write(newf)
 
@@ -54,11 +54,11 @@ xv = np.array(x_axis)
 yv = np.array(y_axis)
 
 # Plot the data
-data_plot=plt.plot(xv,yv)
+data_plot=plt.plot(xv,yv, linestyle='', marker='o')
 plt.setp(data_plot, 'color', 'r', 'linewidth', 2.0)
 plt.xlabel('Time Stamp')
 plt.ylabel('Loads [%]')
 plt.title('Calculation Raw Data - [minhtien.to@gmail.com]')
-plt.axis([0, 10000, 0, 100])
+plt.axis([0, 100, 0, 100])
 plt.grid(True)
 plt.show()

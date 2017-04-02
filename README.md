@@ -29,3 +29,4 @@ References:
 - http://stackoverflow.com/questions/11815538/how-to-import-matplotlib-in-python
 - http://stackoverflow.com/questions/24417149/match-float-with-comma-and-then-replace-comma-with-dot
 - https://developers.google.com/edu/python/regular-expressions
+- http://stackoverflow.com/questions/8409095/matplotlib-set-markers-for-individual-points-on-a-line
