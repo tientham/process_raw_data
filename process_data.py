@@ -9,7 +9,7 @@ import re
 
 # Chaning data format if needed
 with open('fakedata/data_2', 'r+') as f:
-	newf= re.sub(r'(\s+[+-]?[0-9]+),([0-9]+\s+)', r'\1.\2', f.read())
+	newf= re.sub(r'(\s+[0-9]+),([0-9]+\s+)', r'\1.\2', f.read())
 	f.seek(0)
 	f.write(newf)
 
@@ -35,5 +35,11 @@ xv = np.array(x1)
 yv = np.array(y1)
 
 # Plot the data
-plt.plot(xv,yv)
+data_plot=plt.plot(xv,yv)
+plt.setp(data_plot, 'color', 'r', 'linewidth', 2.0)
+plt.xlabel('Time Stamp')
+plt.ylabel('Loads [%]')
+plt.title('Calculation Raw Data - [minhtien.to@gmail.com]')
+plt.axis([0, 10000, 0, 100])
+plt.grid(True)
 plt.show()
