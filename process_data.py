@@ -7,6 +7,21 @@ import matplotlib.pyplot as plt
 import numpy as np
 import re, glob, os
 
+########################
+# User-define Functions#
+########################
+def avg(list):
+	sum = 0
+	for element in list:
+		sum += element
+	print "Average: " + str(sum/len(list))
+def max(list):
+	tmp =0
+	for element in list:
+		if(element > tmp):
+			tmp = element
+	print "Max: " + str(tmp)
+
 #######################
 # Processing raw data #
 #######################
@@ -53,6 +68,8 @@ for line in lines:
 xv = np.array(x_axis)
 yv = np.array(y_axis)
 
+avg(yv)
+max(yv)
 # Plot the data
 data_plot=plt.plot(xv,yv, linestyle='', marker='o')
 plt.setp(data_plot, 'color', 'r', 'linewidth', 2.0)
