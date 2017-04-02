@@ -9,6 +9,8 @@ Description:
 	Calculate max, min, average data
 	Plot graph based on data inputs.
 
+![alt text](images/figure_1.png "Read raw data")
+
 --------------
 Prestitiques:
 --------------
